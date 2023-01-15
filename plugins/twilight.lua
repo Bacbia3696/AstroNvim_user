@@ -1,4 +1,1 @@
-return {
-  "folke/twilight.nvim",
-  event = "BufEnter",
-}
+return {"folke/twilight.nvim", event = "BufEnter"}

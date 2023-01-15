@@ -1,3 +1,1 @@
-return {
-  bg = "none"
-}
+return {bg = "none"}
