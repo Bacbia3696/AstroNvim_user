@@ -6,14 +6,20 @@ return {
             lsp_references = {include_declaration = false, show_line = false},
             find_files = {
                 find_command = {
-                    "rg", "--no-ignore-vcs", "--hidden", "--files", ".",
+                    "rg",
+                    "--no-ignore-vcs",
+                    "--hidden",
+                    "--files",
+                    ".",
                     "-g=!**/{node_modules,dist,.git,target}/**",
-                    "-g=!*.{gw,pb,validate}.go"
-                }
+                    "-g=!*.{gw,pb,validate}.go",
+                },
             },
-            live_grep = {glob_pattern = {"!api/*", "!go.sum"}}
+            live_grep = {glob_pattern = {"!api/*", "!go.sum"}},
         },
-        extensions = {file_browser = {theme = "ivy"}}
+        extensions = {file_browser = {theme = "ivy"}},
     },
-    config = function(plugin, opts) plugin.default_config(opts) end
+    config = function(plugin, opts)
+        plugin.default_config(opts)
+    end,
 }

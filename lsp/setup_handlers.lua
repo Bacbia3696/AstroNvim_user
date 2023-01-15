@@ -14,8 +14,8 @@ return {
             server = opts,
             tools = {
                 -- options same as lsp hover / vim.lsp.util.open_floating_preview()
-                hover_actions = {auto_focus = true}
-            }
+                hover_actions = {auto_focus = true},
+            },
         })
-    end
+    end,
 }

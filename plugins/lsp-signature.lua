@@ -1,7 +1,6 @@
 return {
     "ray-x/lsp_signature.nvim",
-    event = "BufRead",
-    -- ft = { "go" },
+    event = "BufRead", -- ft = { "go" },
     opts = {
         debug = false, -- set to true to enable debug logging
         log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on
@@ -23,7 +22,7 @@ return {
         hint_scheme = "String",
         hi_parameter = "LspSignatureActiveParameter", -- how your parameter will be highlight
         handler_opts = {
-            border = "rounded" -- double, rounded, single, shadow, none, or a table of borders
+            border = "rounded", -- double, rounded, single, shadow, none, or a table of borders
         },
         always_trigger = false, -- sometime show signature on new line or in middle of parameter can be confusing, set it to false for #58
         auto_close_after = nil, -- autoclose signature float win after x sec, disabled if nil.
@@ -36,6 +35,6 @@ return {
         timer_interval = 200, -- default timer check interval set to lower value if you want to reduce latency
         toggle_key = nil, -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
         select_signature_key = nil, -- cycle to next signature, e.g. '<M-n>' function overloading
-        move_cursor_key = nil -- imap, use nvim_set_current_win to move cursor between current win and floating
-    }
+        move_cursor_key = nil, -- imap, use nvim_set_current_win to move cursor between current win and floating
+    },
 }

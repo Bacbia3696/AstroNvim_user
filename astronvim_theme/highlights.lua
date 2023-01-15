@@ -10,7 +10,7 @@ return function(hl) -- or a function that returns a new table of colors to set
     hl.GitSignsCurrentLineBlame = {fg = C.cyan}
     hl.Visual = {fg = C.none, bg = C.grey_1}
     hl.VisualNOS = {fg = C.grey_1, bg = C.none}
-    hl.WinSeparator = {bg = C.none, fg = C.yellow}
+    hl.WinSeparator = {bg = C.none, fg = C.blue}
 
     hl.DiagnosticUnderlineHint.undercurl = false
     hl.DiagnosticUnderlineHint.italic = true
@@ -33,5 +33,8 @@ return function(hl) -- or a function that returns a new table of colors to set
     hl.TSPunctDelimiter = {fg = C.gold}
     hl.TSPunctSpecial = {fg = C.purple}
     hl.TSPunctBracket = {fg = C.blue}
+
+    -- indent-line
+    hl.IndentBlanklineContextChar = {fg = C.blue, nocombine = true}
     return hl
 end

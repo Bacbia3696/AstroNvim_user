@@ -1,6 +1,8 @@
 return {
     "sindrets/diffview.nvim",
-    init = function() table.insert(astronvim.git_plugins, "diffview.nvim") end,
+    init = function()
+        table.insert(astronvim.git_plugins, "diffview.nvim")
+    end,
     config = function()
         local actions = require "diffview.actions"
 
@@ -11,17 +13,17 @@ return {
                 [prefix] = {name = "Diff View"},
                 [prefix .. "<cr>"] = {
                     "<cmd>DiffviewOpen<cr>",
-                    desc = "Open DiffView"
+                    desc = "Open DiffView",
                 },
                 [prefix .. "h"] = {
                     "<cmd>DiffviewFileHistory %<cr>",
-                    desc = "Open DiffView File History"
+                    desc = "Open DiffView File History",
                 },
                 [prefix .. "H"] = {
                     "<cmd>DiffviewFileHistory<cr>",
-                    desc = "Open DiffView Branch History"
-                }
-            }
+                    desc = "Open DiffView Branch History",
+                },
+            },
         }
 
         local build_keymaps = function(maps)
@@ -30,25 +32,27 @@ return {
             for lhs, def in pairs(astronvim.extend_tbl(maps, {
                 [prefix .. "q"] = {
                     "<cmd>DiffviewClose<cr>",
-                    desc = "Quit Diffview"
+                    desc = "Quit Diffview",
                 }, -- Toggle the file panel.
                 ["]D"] = {actions.select_next_entry, desc = "Next Difference"}, -- Open the diff for the next file
                 ["[D"] = {
                     actions.select_prev_entry,
-                    desc = "Previous Difference"
+                    desc = "Previous Difference",
                 }, -- Open the diff for the previous file
                 ["[C"] = {actions.prev_conflict, desc = "Next Conflict"}, -- In the merge_tool: jump to the previous conflict
                 ["]C"] = {actions.next_conflict, desc = "Previous Conflict"}, -- In the merge_tool: jump to the next conflict
                 ["Cl"] = {actions.cycle_layout, desc = "Cycle Diff Layout"}, -- Cycle through available layouts.
                 ["Ct"] = {actions.listing_style, desc = "Cycle Tree Style"}, -- Cycle through available layouts.
                 ["<leader>e"] = {actions.toggle_files, desc = "Toggle Explorer"}, -- Toggle the file panel.
-                ["<leader>o"] = {actions.focus_files, desc = "Focus Explorer"} -- Bring focus to the file panel
+                ["<leader>o"] = {actions.focus_files, desc = "Focus Explorer"}, -- Bring focus to the file panel
             })) do
                 local opts
                 local rhs = def
                 local mode = {"n"}
                 if type(def) == "table" then
-                    if def.mode then mode = def.mode end
+                    if def.mode then
+                        mode = def.mode
+                    end
                     rhs = def[1]
                     def[1] = nil
                     def.mode = nil
@@ -67,53 +71,53 @@ return {
                 view = build_keymaps {
                     [prefix .. "o"] = {
                         actions.conflict_choose "ours",
-                        desc = "Take Ours"
+                        desc = "Take Ours",
                     }, -- Choose the OURS version of a conflict
                     [prefix .. "t"] = {
                         actions.conflict_choose "theirs",
-                        desc = "Take Theirs"
+                        desc = "Take Theirs",
                     }, -- Choose the THEIRS version of a conflict
                     [prefix .. "b"] = {
                         actions.conflict_choose "base",
-                        desc = "Take Base"
+                        desc = "Take Base",
                     }, -- Choose the BASE version of a conflict
                     [prefix .. "a"] = {
                         actions.conflict_choose "all",
-                        desc = "Take All"
+                        desc = "Take All",
                     }, -- Choose all the versions of a conflict
                     [prefix .. "0"] = {
                         actions.conflict_choose "none",
-                        desc = "Take None"
-                    } -- Delete the conflict region
+                        desc = "Take None",
+                    }, -- Delete the conflict region
                 },
                 diff3 = build_keymaps {
                     [prefix .. "O"] = {
                         actions.diffget "ours",
                         mode = {"n", "x"},
-                        desc = "Get Our Diff"
+                        desc = "Get Our Diff",
                     }, -- Obtain the diff hunk from the OURS version of the file
                     [prefix .. "T"] = {
                         actions.diffget "theirs",
                         mode = {"n", "x"},
-                        desc = "Get Their Diff"
-                    } -- Obtain the diff hunk from the THEIRS version of the file
+                        desc = "Get Their Diff",
+                    }, -- Obtain the diff hunk from the THEIRS version of the file
                 },
                 diff4 = build_keymaps {
                     [prefix .. "B"] = {
                         actions.diffget "base",
                         mode = {"n", "x"},
-                        desc = "Get Base Diff"
+                        desc = "Get Base Diff",
                     }, -- Obtain the diff hunk from the OURS version of the file
                     [prefix .. "O"] = {
                         actions.diffget "ours",
                         mode = {"n", "x"},
-                        desc = "Get Our Diff"
+                        desc = "Get Our Diff",
                     }, -- Obtain the diff hunk from the OURS version of the file
                     [prefix .. "T"] = {
                         actions.diffget "theirs",
                         mode = {"n", "x"},
-                        desc = "Get Their Diff"
-                    } -- Obtain the diff hunk from the THEIRS version of the file
+                        desc = "Get Their Diff",
+                    }, -- Obtain the diff hunk from the THEIRS version of the file
                 },
                 file_panel = build_keymaps {
                     j = actions.next_entry, -- Bring the cursor to the next file entry
@@ -133,7 +137,7 @@ return {
                     ["<c-b>"] = actions.scroll_view(-0.25), -- Scroll the view up
                     ["<c-f>"] = actions.scroll_view(0.25), -- Scroll the view down
                     ["<tab>"] = actions.select_next_entry,
-                    ["<s-tab>"] = actions.select_prev_entry
+                    ["<s-tab>"] = actions.select_prev_entry,
                 },
                 file_history_panel = build_keymaps {
                     j = actions.next_entry,
@@ -152,15 +156,15 @@ return {
                     ["<c-b>"] = actions.scroll_view(-0.25),
                     ["<c-f>"] = actions.scroll_view(0.25),
                     ["<tab>"] = actions.select_next_entry,
-                    ["<s-tab>"] = actions.select_prev_entry
+                    ["<s-tab>"] = actions.select_prev_entry,
                 },
                 option_panel = {
                     q = actions.close,
                     o = actions.select_entry,
                     ["<cr>"] = actions.select_entry,
-                    ["<2-LeftMouse"] = actions.select_entry
-                }
-            }
+                    ["<2-LeftMouse"] = actions.select_entry,
+                },
+            },
         }
-    end
+    end,
 }

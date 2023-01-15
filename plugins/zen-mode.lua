@@ -18,9 +18,9 @@ return {
                 relativenumber = false, -- disable relative numbers
                 -- cursorline = false, -- disable cursorline
                 -- cursorcolumn = false, -- disable cursor column
-                foldcolumn = "0" -- disable fold column
+                foldcolumn = "0", -- disable fold column
                 -- list = false, -- disable whitespace characters
-            }
+            },
         },
         plugins = {
             -- disable some global vim options (vim.o...)
@@ -28,7 +28,7 @@ return {
             options = {
                 enabled = true,
                 ruler = true, -- disables the ruler text in the cmd line area
-                showcmd = true -- disables the command in the last line of the screen
+                showcmd = true, -- disables the command in the last line of the screen
             },
             twilight = {enabled = true}, -- enable to start Twilight when zen mode opens
             -- gitsigns = { enabled = true }, -- disables git signs
@@ -39,8 +39,8 @@ return {
             -- - listen_on unix:/tmp/kitty
             kitty = {
                 enabled = false,
-                font = "+4" -- font size increment
-            }
+                font = "+4", -- font size increment
+            },
         },
         -- callback where you can add custom code when the Zen window opens
         ---@diagnostic disable-next-line: unused-local
@@ -49,6 +49,7 @@ return {
             -- vim.cmd("colorscheme tokyonight")
         end,
         -- callback where you can add custom code when the Zen window closes
-        on_close = function() end
-    }
+        on_close = function()
+        end,
+    },
 }

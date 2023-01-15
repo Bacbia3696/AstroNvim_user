@@ -1,5 +1,5 @@
 return {
-    NormalNC = {bg = "none"}
+    NormalNC = {bg = "none"},
     -- NormalFloat = {
     --   bg = "none"
     -- },

@@ -48,6 +48,20 @@ map("n", "]D", function()
 end)
 map({"n", "t"}, "<C-\\>", "<cmd>ToggleTerm<cr>")
 
+-- close all foating window
+map({"n", "i"}, "<M-c>", function()
+    local closed_windows = {}
+    for _, win in ipairs(vim.api.nvim_list_wins()) do
+        local config = vim.api.nvim_win_get_config(win)
+        if config.relative ~= "" then -- is_floating_window?
+            vim.api.nvim_win_close(win, false) -- do not force
+            table.insert(closed_windows, win)
+        end
+    end
+    print(string.format("Closed %d windows: %s", #closed_windows,
+                        vim.inspect(closed_windows)))
+end)
+
 local dap = require('dap')
 
 local keymaps = {
@@ -56,7 +70,14 @@ local keymaps = {
         [";"] = ":",
         ["0"] = "^",
         ["$"] = "g$",
-        ["<leader>q"] = "<cmd>qa<cr>"
+        ["<leader>q"] = "<cmd>qa<cr>",
+    },
+    t = {
+        -- clear default
+        ["<C-l>"] = false,
+        ["<C-j>"] = false,
+        ["<C-k>"] = false,
+        ["<C-h>"] = false,
     },
     n = {
         -- faster scrolling
@@ -72,6 +93,12 @@ local keymaps = {
             print(command)
             vim.fn.execute(command)
         end,
+
+        -- clear default
+        ["<C-l>"] = false,
+        ["<C-j>"] = false,
+        ["<C-k>"] = false,
+        ["<C-h>"] = false,
 
         -- TODO: this shoulbe move to dap toggle
         -- dap
@@ -100,12 +127,13 @@ local keymaps = {
         ["<leader>6"] = "<C-^>",
         ["<leader>q"] = false,
         ["<c-g>"] = "2<c-g>",
+        ["<m-a>"] = "ggVG",
 
         -- telescope
         ["<leader>ff"] = ts.find_files,
         ["<leader>fb"] = ts.buffers,
         ["<leader>fw"] = ts.live_grep,
-        ["<leader><leader>"] = ts.builtin
+        ["<leader><leader>"] = ts.builtin,
     },
     ["!"] = {
         -- emacs like binding
@@ -116,11 +144,13 @@ local keymaps = {
         ["<C-b>"] = "<Left>",
         ["<C-f>"] = "<Right>",
         ["<M-b>"] = "<S-Left>",
-        ["<M-f>"] = "<S-Right>"
-    }
+        ["<M-f>"] = "<S-Right>",
+    },
 }
 
 -- save break points
-for _, c in ipairs({",", "?", ".", "!"}) do keymaps["i"][c] = c .. "<C-g>u" end
+for _, c in ipairs({",", "?", ".", "!"}) do
+    keymaps["i"][c] = c .. "<C-g>u"
+end
 
 return keymaps;
