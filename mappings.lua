@@ -48,10 +48,6 @@ map("n", "]D", function()
 end)
 map({"n", "t"}, "<C-\\>", "<cmd>ToggleTerm<cr>")
 
--- dap
-vim.cmd([[
-]])
-
 local dap = require('dap')
 
 local keymaps = {
@@ -96,8 +92,8 @@ local keymaps = {
         ["<leader>dd"] = dap.toggle,
 
         -- common
-        ["<leader>1"] = "<cmd>Mason<cr>",
-        ["<leader>2"] = "<cmd>Lazy<cr>",
+        ["<leader>1"] = "<cmd>Lazy<cr>",
+        ["<leader>2"] = "<cmd>Mason<cr>",
         ["<leader>3"] = "<cmd>Neotree toggle<cr>",
         ["<leader>4"] = "<cmd>AerialToggle<cr>",
         ["<leader>5"] = "<cmd>Other<cr>",

@@ -7,8 +7,7 @@ return {
             vim.keymap.set("n", "K", rt.hover_actions.hover_actions,
                            {buffer = bufnr})
             -- Code action groups
-            vim.keymap.set("n", "<leader>a",
-                           rt.code_action_group.code_action_group,
+            vim.keymap.set("n", "ga", rt.code_action_group.code_action_group,
                            {buffer = bufnr})
         end
         require('rust-tools').setup({

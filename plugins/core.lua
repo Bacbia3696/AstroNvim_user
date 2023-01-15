@@ -30,8 +30,5 @@ return {
         "andymass/vim-matchup", -- add matchup with ts support
         event = "BufEnter"
     }, "metakirby5/codi.vim", -- interactive environment for coding
-    "jpalardy/vim-slime", -- send command to external program!!
-    -- treesitter extension
-    {"nvim-treesitter/playground", event = "BufEnter"},
-    {"nvim-treesitter/nvim-treesitter-textobjects", event = "BufEnter"}
+    "jpalardy/vim-slime" -- send command to external program!!
 }
