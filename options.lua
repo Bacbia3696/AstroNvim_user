@@ -1,6 +1,7 @@
 local options = {
     opt = {
         swapfile = false,
+        shiftwidth = 4,
         relativenumber = false,
         confirm = true,
         history = 1000,

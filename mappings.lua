@@ -1,13 +1,33 @@
 -- TODO: use keymaps instead
 local map = vim.keymap.set
 local ts = require("telescope.builtin")
+local gs = require("gitsigns")
 
+-- git sign
+map({"o", "x"}, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+map("n", "]g", function()
+    if vim.wo.diff then
+        return "]g"
+    end
+    vim.schedule(function() gs.next_hunk() end)
+    return "<Ignore>"
+end, {expr = true})
+
+map("n", "[g", function()
+    if vim.wo.diff then
+        return "[g"
+    end
+    vim.schedule(function() gs.prev_hunk() end)
+    return "<Ignore>"
+end, {expr = true})
+-- --------------------------------------------------------
+
+-- save without format
 map({"i", "n", "v", "s", "x"}, "<C-s>", "<esc><cmd>up<CR>")
--- format and save
+-- save with format
 map({"i", "n", "v", "s"}, "<M-s>", function()
     vim.cmd("stopinsert")
-    local timeout = 5000
-    vim.lsp.buf.format({async = false, timeout_ms = timeout})
+    vim.lsp.buf.format({async = false, timeout_ms = 5000})
     vim.cmd("up")
 end)
 -- navigate windows
@@ -128,6 +148,7 @@ local keymaps = {
         ["<leader>q"] = false,
         ["<c-g>"] = "2<c-g>",
         ["<m-a>"] = "ggVG",
+        ["*"] = "<cmd>keepjumps normal! mi*`i<CR>",
 
         -- telescope
         ["<leader>ff"] = ts.find_files,
