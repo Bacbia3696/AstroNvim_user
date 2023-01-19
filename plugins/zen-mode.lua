@@ -14,8 +14,9 @@ return {
             -- uncomment any of the options below, or add other vim.wo options you want to apply
             options = {
                 signcolumn = "yes", -- disable signcolumn
-                number = true, -- disable number column
+                number = false, -- disable number column
                 relativenumber = false, -- disable relative numbers
+                wrap = false,
                 -- cursorline = false, -- disable cursorline
                 -- cursorcolumn = false, -- disable cursor column
                 foldcolumn = "0", -- disable fold column
@@ -30,7 +31,7 @@ return {
                 ruler = true, -- disables the ruler text in the cmd line area
                 showcmd = true, -- disables the command in the last line of the screen
             },
-            twilight = {enabled = true}, -- enable to start Twilight when zen mode opens
+            twilight = {enabled = false}, -- enable to start Twilight when zen mode opens
             -- gitsigns = { enabled = true }, -- disables git signs
             tmux = {enabled = false}, -- disables the tmux statusline
             -- this will change the font size on kitty when in zen mode
@@ -46,10 +47,8 @@ return {
         ---@diagnostic disable-next-line: unused-local
         on_open = function(win)
             -- vim.opt.list = false
-            -- vim.cmd("colorscheme tokyonight")
         end,
         -- callback where you can add custom code when the Zen window closes
-        on_close = function()
-        end,
+        on_close = function() end,
     },
 }

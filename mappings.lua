@@ -1,26 +1,6 @@
 -- TODO: use keymaps instead
 local map = vim.keymap.set
 local ts = require("telescope.builtin")
-local gs = require("gitsigns")
-
--- git sign
-map({"o", "x"}, "ih", ":<C-U>Gitsigns select_hunk<CR>")
-map("n", "]g", function()
-    if vim.wo.diff then
-        return "]g"
-    end
-    vim.schedule(function() gs.next_hunk() end)
-    return "<Ignore>"
-end, {expr = true})
-
-map("n", "[g", function()
-    if vim.wo.diff then
-        return "[g"
-    end
-    vim.schedule(function() gs.prev_hunk() end)
-    return "<Ignore>"
-end, {expr = true})
--- --------------------------------------------------------
 
 -- save without format
 map({"i", "n", "v", "s", "x"}, "<C-s>", "<esc><cmd>up<CR>")
@@ -119,6 +99,7 @@ local keymaps = {
         ["<C-j>"] = false,
         ["<C-k>"] = false,
         ["<C-h>"] = false,
+        ["<leader>e"] = false,
 
         -- TODO: this shoulbe move to dap toggle
         -- dap
@@ -126,10 +107,12 @@ local keymaps = {
         ["<F10>"] = dap.step_over,
         ["<F11>"] = dap.step_into,
         ["<F12>"] = dap.step_out,
-        ["<leader>b"] = dap.toggle_breakpoint,
-        ["<leader>B"] = function()
-            dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
-        end,
+        ["<F21>"] = {
+            function()
+                dap.set_breakpoint(vim.fn.input('Breakpoint condition: '))
+            end,
+            desc = "Set Breakpoint condition <S-F9>",
+        },
         ["<leader>lp"] = function()
             dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))
         end,
@@ -151,10 +134,10 @@ local keymaps = {
         ["*"] = "<cmd>keepjumps normal! mi*`i<CR>",
 
         -- telescope
-        ["<leader>ff"] = ts.find_files,
-        ["<leader>fb"] = ts.buffers,
-        ["<leader>fw"] = ts.live_grep,
-        ["<leader><leader>"] = ts.builtin,
+        -- ["<leader>ff"] = ts.find_files,
+        -- ["<leader>fb"] = ts.buffers,
+        -- ["<leader>fw"] = ts.live_grep,
+        ["<leader><leader>"] = {ts.builtin, desc = "Telescope builtin"},
     },
     ["!"] = {
         -- emacs like binding

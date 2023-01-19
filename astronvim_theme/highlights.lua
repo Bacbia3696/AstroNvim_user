@@ -11,6 +11,8 @@ return function(hl) -- or a function that returns a new table of colors to set
     hl.Visual = {fg = C.none, bg = C.grey_1}
     hl.VisualNOS = {fg = C.grey_1, bg = C.none}
     hl.WinSeparator = {bg = C.none, fg = C.blue}
+    hl.LineNr = {fg = C.grey_9}
+    hl.Folded = {bg = C.grey_4}
 
     hl.DiagnosticUnderlineHint.undercurl = false
     hl.DiagnosticUnderlineHint.italic = true
