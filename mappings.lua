@@ -32,7 +32,7 @@ map("n", "sp", [[:execute '!echo -n %:p:h | pbcopy'<CR>]])
 map("n", "sf", [[:execute '!echo -n %:p | pbcopy'<CR>]])
 
 -- lsp mapping
-map({"i", "n"}, "<C-k>", vim.lsp.buf.signature_help)
+map({"i", "n"}, "<M-k>", vim.lsp.buf.signature_help)
 map("n", "gi", "<cmd>Telescope lsp_implementations<cr>")
 map("n", "gt", "<cmd>Telescope lsp_type_definitions theme=dropdown<cr>")
 map("n", "<leader>rn", vim.lsp.buf.rename)
@@ -66,12 +66,7 @@ local dap = require('dap')
 
 local keymaps = {
     i = {},
-    [""] = {
-        [";"] = ":",
-        ["0"] = "^",
-        ["$"] = "g$",
-        ["<leader>q"] = "<cmd>qa<cr>",
-    },
+    [""] = {["<leader>q"] = "<cmd>qa<cr>"},
     t = {
         -- clear default
         ["<C-l>"] = false,
@@ -79,7 +74,12 @@ local keymaps = {
         ["<C-k>"] = false,
         ["<C-h>"] = false,
     },
+    x = {[";"] = ":", ["0"] = "^", ["$"] = "g$"},
+    o = {[";"] = ":", ["0"] = "^", ["$"] = "g$"},
     n = {
+        [";"] = ":",
+        ["0"] = "^",
+        ["$"] = "g$",
         -- faster scrolling
         ["<C-e>"] = "3<C-e>",
         ["<C-y>"] = "3<C-y>",
