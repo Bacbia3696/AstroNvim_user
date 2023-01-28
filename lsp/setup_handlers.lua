@@ -10,6 +10,8 @@ return {
             vim.keymap.set("n", "ga", rt.code_action_group.code_action_group,
                            {buffer = bufnr})
         end
+        opts.cmd = {"rustup", "run", "stable", "rust-analyzer"}
+
         require('rust-tools').setup({
             server = opts,
             tools = {
