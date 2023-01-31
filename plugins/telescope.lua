@@ -12,14 +12,11 @@ return {
                     "--files",
                     ".",
                     "-g=!**/{node_modules,dist,.git,target}/**",
-                    "-g=!*.{gw,pb,validate}.go",
+                    "-g=!*.{gw,pb,validate}.go", -- protobuf gen go file
                 },
             },
             live_grep = {glob_pattern = {"!api/*", "!go.sum"}},
         },
         extensions = {file_browser = {theme = "ivy"}},
     },
-    config = function(plugin, opts)
-        plugin.default_config(opts)
-    end,
 }

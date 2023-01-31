@@ -132,6 +132,10 @@ local keymaps = {
         ["<c-g>"] = "2<c-g>",
         ["<m-a>"] = "ggVG",
         ["*"] = "<cmd>keepjumps normal! mi*`i<CR>",
+        ["<leader>tg"] = {
+            require("gitsigns").toggle_current_line_blame,
+            desc = "Toggle current line blame",
+        },
 
         -- telescope
         -- ["<leader>ff"] = ts.find_files,

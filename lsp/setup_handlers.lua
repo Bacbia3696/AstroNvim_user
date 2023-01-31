@@ -5,10 +5,10 @@ return {
         opts.on_attach = function(config, bufnr)
             default_attach(config, bufnr)
             vim.keymap.set("n", "<C-k>", rt.hover_actions.hover_actions,
-                           {buffer = bufnr})
+                           {buffer = bufnr, desc = "LSP hover actions"})
             -- Code action groups
             vim.keymap.set("n", "ga", rt.code_action_group.code_action_group,
-                           {buffer = bufnr})
+                           {buffer = bufnr, desc = "LSP code action group"})
         end
         opts.cmd = {"rustup", "run", "stable", "rust-analyzer"}
 
