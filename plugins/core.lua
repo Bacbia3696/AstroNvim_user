@@ -1,8 +1,8 @@
 return {
     -- NOTE: customize default plugins
-    {"nvim-neo-tree/neo-tree.nvim", version = false, branch = "main"}, -- use mainline neo-tree for testing new fix
-    {"max397574/better-escape.nvim", enabled = false},
-    {"folke/which-key.nvim", opts = {window = {border = "none"}}},
+    { "nvim-neo-tree/neo-tree.nvim", version = false, branch = "main" }, -- use mainline neo-tree for testing new fix
+    { "max397574/better-escape.nvim", enabled = false },
+    { "folke/which-key.nvim", opts = { window = { border = "none" } } },
     {
         "tpope/vim-surround", -- select surround
         event = "BufEnter",
@@ -15,22 +15,21 @@ return {
         "tpope/vim-repeat", -- repeat command
         event = "BufEnter",
     },
-    {"tpope/vim-fugitive", event = "BufEnter"},
+    { "tpope/vim-fugitive", event = "BufEnter" },
     {
         "andymass/vim-matchup", -- add matchup with ts support
         event = "BufEnter",
     },
     {
         "metakirby5/codi.vim", -- interactive environment for coding
-        cmd = {"Codi", "Codi", "CodiNew", "CodiExpand"},
+        cmd = { "Codi", "Codi", "CodiNew", "CodiExpand" },
     },
     {
         "kevinhwang91/nvim-ufo",
         opts = {
             provider_selector = function(_, filetype, buftype)
-                return
-                    (filetype == "" or buftype == "nofile") and "indent" -- only use indent until a file is opened
-                    or {"lsp", "indent"}
+                return (filetype == "" or buftype == "nofile") and "indent" -- only use indent until a file is opened
+                    or { "lsp", "indent" }
             end,
             fold_virt_text_handler = function(virtText, lnum, endLnum, width,
                                               truncate)
@@ -47,19 +46,19 @@ return {
                     else
                         chunkText = truncate(chunkText, targetWidth - curWidth)
                         local hlGroup = chunk[2]
-                        table.insert(newVirtText, {chunkText, hlGroup})
+                        table.insert(newVirtText, { chunkText, hlGroup })
                         chunkWidth = vim.fn.strdisplaywidth(chunkText)
                         -- str width returned from truncate() may less than 2nd argument, need padding
                         if curWidth + chunkWidth < targetWidth then
                             suffix = suffix ..
-                                         (' '):rep(
-                                             targetWidth - curWidth - chunkWidth)
+                                (' '):rep(
+                                    targetWidth - curWidth - chunkWidth)
                         end
                         break
                     end
                     curWidth = curWidth + chunkWidth
                 end
-                table.insert(newVirtText, {suffix, 'MoreMsg'})
+                table.insert(newVirtText, { suffix, 'MoreMsg' })
                 return newVirtText
             end,
         },
