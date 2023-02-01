@@ -32,11 +32,10 @@ map("n", "sp", [[:execute '!echo -n %:p:h | pbcopy'<CR>]])
 map("n", "sf", [[:execute '!echo -n %:p | pbcopy'<CR>]])
 
 -- lsp mapping
-map({"i", "n"}, "<M-k>", vim.lsp.buf.signature_help)
+map({"i", "n"}, "<C-h>", vim.lsp.buf.signature_help)
 map("n", "gi", "<cmd>Telescope lsp_implementations<cr>")
 map("n", "gt", "<cmd>Telescope lsp_type_definitions theme=dropdown<cr>")
 map("n", "<leader>rn", vim.lsp.buf.rename)
--- map({ "i", "n" }, "<C-k>", vim.lsp.buf.signature_help)
 map("n", "go", vim.diagnostic.open_float)
 map("n", "[d", vim.diagnostic.goto_prev)
 map("n", "]d", vim.diagnostic.goto_next)

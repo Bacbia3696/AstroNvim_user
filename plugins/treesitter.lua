@@ -6,7 +6,7 @@ return {
             vim.cmd([[
             omap     <silent> m :<C-U>lua require('tsht').nodes()<CR>
             xnoremap <silent> m :lua require('tsht').nodes()<CR>
-          ]])
+          ]] )
         end,
     },
     {
@@ -33,8 +33,8 @@ return {
                     node_decremental = "<bs>",
                 },
             },
-            indent = {enable = false},
-            matchup = {enable = true},
+            indent = { enable = false },
+            matchup = { enable = true },
             textobjects = {
                 select = {
                     enable = true,
@@ -49,8 +49,8 @@ return {
                 },
                 swap = {
                     enable = true,
-                    swap_next = {["<leader>a"] = "@parameter.inner"},
-                    swap_previous = {["<leader>A"] = "@parameter.inner"},
+                    swap_next = { ["<leader>a"] = "@parameter.inner" },
+                    swap_previous = { ["<leader>A"] = "@parameter.inner" },
                 },
                 move = {
                     enable = true,
@@ -104,7 +104,7 @@ return {
                 disable = function(lang, buf)
                     local max_filesize = 500 * 1024 -- 500 KB
                     local ok, stats = pcall(vim.loop.fs_stat,
-                                            vim.api.nvim_buf_get_name(buf))
+                        vim.api.nvim_buf_get_name(buf))
                     if ok and stats and stats.size > max_filesize then
                         return true
                     end

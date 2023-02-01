@@ -29,6 +29,7 @@ return {
                         hl.VisualNOS = { fg = c.grey_1, bg = c.none }
                         hl.WinSeparator = { bg = c.none, fg = c.blue }
                         hl.Folded = { bg = c.grey_3 }
+                        hl.FoldColumn = { fg = c.grey_2 }
 
                         hl.DiagnosticUnderlineHint = {
                             undercurl = false,
