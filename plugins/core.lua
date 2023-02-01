@@ -1,7 +1,7 @@
 return {
     -- NOTE: customize default plugins
-    { "nvim-neo-tree/neo-tree.nvim", version = false, branch = "main" }, -- use mainline neo-tree for testing new fix
     { "max397574/better-escape.nvim", enabled = false },
+    { "nvim-neo-tree/neo-tree.nvim", enabled = false },
     {
         "tpope/vim-surround", -- select surround
         event = "BufEnter",
@@ -26,10 +26,15 @@ return {
     {
         "kevinhwang91/nvim-ufo",
         opts = {
+            preview = {
+                win_config = { winblend = 0 },
+                mappings = { switch = 'K', close = '<esc>' },
+            },
             provider_selector = function(_, filetype, buftype)
                 return (filetype == "" or buftype == "nofile") and "indent" -- only use indent until a file is opened
                     or { "lsp", "indent" }
             end,
+            enable_get_fold_virt_text = true,
             fold_virt_text_handler = function(virtText, lnum, endLnum, width,
                                               truncate)
                 local newVirtText = {}

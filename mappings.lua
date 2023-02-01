@@ -3,21 +3,21 @@ local map = vim.keymap.set
 local ts = require("telescope.builtin")
 
 -- save without format
-map({"i", "n", "v", "s", "x"}, "<C-s>", "<esc><cmd>up<CR>")
+map({ "i", "n", "v", "s", "x" }, "<C-s>", "<esc><cmd>up<CR>")
 -- save with format
-map({"i", "n", "v", "s"}, "<M-s>", function()
+map({ "i", "n", "v", "s" }, "<M-s>", function()
     vim.cmd("stopinsert")
-    vim.lsp.buf.format({async = false, timeout_ms = 5000})
+    vim.lsp.buf.format({ async = false, timeout_ms = 5000 })
     vim.cmd("up")
 end)
 -- navigate windows
 for i = 1, 9 do
-    map({"n", "i", "t"}, "<M-" .. i .. ">", "<cmd>" .. i .. "wincmd w<cr>")
+    map({ "n", "i", "t" }, "<M-" .. i .. ">", "<cmd>" .. i .. "wincmd w<cr>")
 end
 -- navigate tabs
-map({"n", "i"}, "<M-t>", "<cmd>tabnew<cr>")
-map({"n", "i"}, "<M-j>", "<cmd>tabp<cr>")
-map({"n", "i"}, "<M-k>", "<cmd>tabn<cr>")
+map({ "n", "i" }, "<M-t>", "<cmd>tabnew<cr>")
+map({ "n", "i" }, "<M-j>", "<cmd>tabp<cr>")
+map({ "n", "i" }, "<M-k>", "<cmd>tabn<cr>")
 
 -- packer
 map("n", "<leader>pc", "<cmd>PackerCompile<cr>")
@@ -32,40 +32,29 @@ map("n", "sp", [[:execute '!echo -n %:p:h | pbcopy'<CR>]])
 map("n", "sf", [[:execute '!echo -n %:p | pbcopy'<CR>]])
 
 -- lsp mapping
-map({"i", "n"}, "<C-h>", vim.lsp.buf.signature_help)
+map({ "i", "n" }, "<C-h>", vim.lsp.buf.signature_help)
 map("n", "gi", "<cmd>Telescope lsp_implementations<cr>")
 map("n", "gt", "<cmd>Telescope lsp_type_definitions theme=dropdown<cr>")
+map("n", "<leader>rr", vim.lsp.codelens.run)
 map("n", "<leader>rn", vim.lsp.buf.rename)
 map("n", "go", vim.diagnostic.open_float)
 map("n", "[d", vim.diagnostic.goto_prev)
 map("n", "]d", vim.diagnostic.goto_next)
 map("n", "[D", function()
-    vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})
+    vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end)
 map("n", "]D", function()
-    vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})
+    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
 end)
-map({"n", "t"}, "<C-\\>", "<cmd>ToggleTerm<cr>")
+map({ "n", "t" }, "<C-\\>", "<cmd>ToggleTerm<cr>")
 
--- close all foating window
-map({"n", "i"}, "<M-c>", function()
-    local closed_windows = {}
-    for _, win in ipairs(vim.api.nvim_list_wins()) do
-        local config = vim.api.nvim_win_get_config(win)
-        if config.relative ~= "" then -- is_floating_window?
-            vim.api.nvim_win_close(win, false) -- do not force
-            table.insert(closed_windows, win)
-        end
-    end
-    print(string.format("Closed %d windows: %s", #closed_windows,
-                        vim.inspect(closed_windows)))
-end)
+map({ "n", "i" }, "<M-c>", require("notify").dismiss)
 
 local dap = require('dap')
 
 local keymaps = {
     i = {},
-    [""] = {["<leader>q"] = "<cmd>qa<cr>"},
+    [""] = { ["<leader>q"] = "<cmd>qa<cr>" },
     t = {
         -- clear default
         ["<C-l>"] = false,
@@ -73,9 +62,16 @@ local keymaps = {
         ["<C-k>"] = false,
         ["<C-h>"] = false,
     },
-    x = {[";"] = ":", ["0"] = "^", ["$"] = "g$"},
-    o = {[";"] = ":", ["0"] = "^", ["$"] = "g$"},
+    x = { [";"] = ":",["0"] = "^",["$"] = "g$" },
+    o = { [";"] = ":",["0"] = "^",["$"] = "g$" },
     n = {
+
+        ["<leader>gg"] = {
+            function() require("core.utils").toggle_term_cmd "gitui" end,
+            desc = "ToggleTerm gitui",
+        },
+        ["<leader>h"] = false,
+        ["<leader>hh"] = "<cmd>Alpha<cr>",
         [";"] = ":",
         ["0"] = "^",
         ["$"] = "g$",
@@ -123,24 +119,18 @@ local keymaps = {
         -- common
         ["<leader>1"] = "<cmd>Lazy<cr>",
         ["<leader>2"] = "<cmd>Mason<cr>",
-        ["<leader>3"] = "<cmd>Neotree toggle<cr>",
+        ["<leader>3"] = "<cmd>NvimTreeToggle<cr>",
         ["<leader>4"] = "<cmd>AerialToggle<cr>",
-        ["<leader>5"] = "<cmd>Other<cr>",
-        ["<leader>6"] = "<C-^>",
         ["<leader>q"] = false,
-        ["<c-g>"] = "2<c-g>",
+        ["<c-g>"] = "1<c-g>",
         ["<m-a>"] = "ggVG",
-        ["*"] = "<cmd>keepjumps normal! mi*`i<CR>",
-        ["<leader>tg"] = {
-            require("gitsigns").toggle_current_line_blame,
-            desc = "Toggle current line blame",
-        },
+        -- ["*"] = "<cmd>keepjumps normal! mi*`i<CR>",
 
         -- telescope
         -- ["<leader>ff"] = ts.find_files,
         -- ["<leader>fb"] = ts.buffers,
         -- ["<leader>fw"] = ts.live_grep,
-        ["<leader><leader>"] = {ts.builtin, desc = "Telescope builtin"},
+        ["<leader><leader>"] = { ts.builtin, desc = "Telescope builtin" },
     },
     ["!"] = {
         -- emacs like binding
@@ -156,7 +146,7 @@ local keymaps = {
 }
 
 -- save break points
-for _, c in ipairs({",", "?", ".", "!"}) do
+for _, c in ipairs({ ",", "?", ".", "!" }) do
     keymaps["i"][c] = c .. "<C-g>u"
 end
 
