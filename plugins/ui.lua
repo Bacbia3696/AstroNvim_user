@@ -24,12 +24,16 @@ return {
                         hl.NormalNC = { bg = c.bg } -- transparent background
                         hl.NotifyBackground = { bg = c.bg_1 } -- fix nvim notify error
                         hl.GitSignsCurrentLineBlame = { fg = c.cyan }
-                        hl.GitSignsCurrentLineBlame = { fg = c.cyan }
                         hl.Visual = { fg = c.none, bg = c.grey_1 }
                         hl.VisualNOS = { fg = c.grey_1, bg = c.none }
                         hl.WinSeparator = { bg = c.none, fg = c.blue }
                         hl.Folded = { bg = c.grey_3 }
-                        hl.FoldColumn = { fg = c.grey_2 }
+                        hl.FoldColumn = {
+                            fg = c.grey_2,
+                            bold = true,
+                            italic = true,
+                        }
+                        hl.FloatBorder = { fg = "#6F1AB6" }
 
                         hl.DiagnosticUnderlineHint = {
                             undercurl = false,
@@ -38,6 +42,7 @@ return {
                         hl.DiagnosticUnderlineWarn = { undercurl = false }
                         hl.DiagnosticHint = { fg = c.cyan_1 }
 
+                        -- more readable for lsp LspReference
                         hl.LspReferenceText = { fg = c.none, bg = c.grey_7 }
                         hl.LspReferenceRead = { fg = c.none, bg = c.grey_7 }
                         hl.LspReferenceWrite = { fg = c.none, bg = c.grey_9 }
@@ -46,6 +51,7 @@ return {
                         hl.IndentBlanklineContextChar =
                         { -- nvim indent line
                             fg = c.blue,
+                            -- bg = c.blue,
                             nocombine = true,
                         }
                     end,

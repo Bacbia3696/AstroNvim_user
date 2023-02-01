@@ -2,7 +2,6 @@ return {
     -- NOTE: customize default plugins
     { "nvim-neo-tree/neo-tree.nvim", version = false, branch = "main" }, -- use mainline neo-tree for testing new fix
     { "max397574/better-escape.nvim", enabled = false },
-    { "folke/which-key.nvim", opts = { window = { border = "none" } } },
     {
         "tpope/vim-surround", -- select surround
         event = "BufEnter",

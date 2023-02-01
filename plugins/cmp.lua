@@ -16,20 +16,20 @@ return {
             return
         end
         local border_opts = {
-            border = "single",
+            border = "rounded",
             winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
         }
 
         local function has_words_before()
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))
             return col ~= 0 and
-                       vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(
-                           col, col):match "%s" == nil
+                vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(
+                    col, col):match "%s" == nil
         end
 
         return {
             enabled = function()
-                if vim.api.nvim_get_option_value("buftype", {buf = 0}) ==
+                if vim.api.nvim_get_option_value("buftype", { buf = 0 }) ==
                     "prompt" then
                     return false
                 end
@@ -37,7 +37,7 @@ return {
             end,
             preselect = cmp.PreselectMode.None,
             formatting = {
-                fields = {"kind", "abbr", "menu"},
+                fields = { "kind", "abbr", "menu" },
                 format = lspkind_status_ok and
                     lspkind.cmp_format(astronvim.lspkind) or nil,
             },
@@ -80,15 +80,15 @@ return {
                 ["<C-j>"] = cmp.mapping.select_next_item {
                     behavior = cmp.SelectBehavior.Insert,
                 },
-                ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
-                ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
-                ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+                ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+                ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+                ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
                 -- ["<C-y>"] = cmp.config.disable,
                 ["<C-y>"] = cmp.mapping {
                     i = cmp.mapping.abort(),
                     c = cmp.mapping.close(),
                 },
-                ["<CR>"] = cmp.mapping.confirm {select = true},
+                ["<CR>"] = cmp.mapping.confirm { select = true },
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if luasnip.expandable() then
                         luasnip.expand()
@@ -97,20 +97,20 @@ return {
                     else
                         fallback()
                     end
-                end, {"i", "s"}),
+                end, { "i", "s" }),
                 ["<S-Tab>"] = cmp.mapping(function(fallback)
                     if luasnip.jumpable(-1) then
                         luasnip.jump(-1)
                     else
                         fallback()
                     end
-                end, {"i", "s"}),
+                end, { "i", "s" }),
             },
             sources = cmp.config.sources {
-                {name = "nvim_lsp", priority = 1000},
-                {name = "luasnip", priority = 750},
-                {name = "buffer", priority = 500},
-                {name = "path", priority = 250},
+                { name = "nvim_lsp", priority = 1000 },
+                { name = "luasnip", priority = 750 },
+                { name = "buffer", priority = 500 },
+                { name = "path", priority = 250 },
             },
         }
     end,
