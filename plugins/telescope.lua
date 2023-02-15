@@ -1,9 +1,9 @@
 return {
     "nvim-telescope/telescope.nvim",
     opts = {
-        defaults = {prompt_prefix = "🔭 "},
+        defaults = { prompt_prefix = "🔭 " },
         pickers = {
-            lsp_references = {include_declaration = false, show_line = false},
+            lsp_references = { include_declaration = false, show_line = false },
             find_files = {
                 find_command = {
                     "rg",
@@ -15,8 +15,8 @@ return {
                     "-g=!*.{gw,pb,validate}.go", -- protobuf gen go file
                 },
             },
-            live_grep = {glob_pattern = {"!api/*", "!go.sum"}},
+            live_grep = { glob_pattern = { "!api/*", "!go.sum" } },
         },
-        extensions = {file_browser = {theme = "ivy"}},
+        extensions = { file_browser = { theme = "ivy" } },
     },
 }

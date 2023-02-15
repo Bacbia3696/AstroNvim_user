@@ -1,1 +1,1 @@
-return {channel = "nightly", branch = "v3", skip_prompts = true}
+return { channel = "nightly", branch = "v3", skip_prompts = true }

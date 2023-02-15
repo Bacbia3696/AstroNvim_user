@@ -1,7 +1,7 @@
 return {
     -- NOTE: customize default plugins
     { "max397574/better-escape.nvim", enabled = false },
-    { "nvim-neo-tree/neo-tree.nvim", enabled = false },
+    { "nvim-neo-tree/neo-tree.nvim",  enabled = false },
     {
         "tpope/vim-surround", -- select surround
         event = "BufEnter",
@@ -31,7 +31,8 @@ return {
                 mappings = { switch = 'K', close = '<esc>' },
             },
             provider_selector = function(_, filetype, buftype)
-                return (filetype == "" or buftype == "nofile") and "indent" -- only use indent until a file is opened
+                return
+                    (filetype == "" or buftype == "nofile") and "indent" -- only use indent until a file is opened
                     or { "lsp", "indent" }
             end,
             enable_get_fold_virt_text = true,

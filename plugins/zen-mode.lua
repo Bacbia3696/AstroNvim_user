@@ -31,9 +31,9 @@ return {
                 ruler = true, -- disables the ruler text in the cmd line area
                 showcmd = true, -- disables the command in the last line of the screen
             },
-            twilight = {enabled = false}, -- enable to start Twilight when zen mode opens
+            twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
             -- gitsigns = { enabled = true }, -- disables git signs
-            tmux = {enabled = false}, -- disables the tmux statusline
+            tmux = { enabled = false }, -- disables the tmux statusline
             -- this will change the font size on kitty when in zen mode
             -- to make this work, you need to set the following kitty options:
             -- - allow_remote_control socket-only
@@ -49,6 +49,7 @@ return {
             -- vim.opt.list = false
         end,
         -- callback where you can add custom code when the Zen window closes
-        on_close = function() end,
+        on_close = function()
+        end,
     },
 }

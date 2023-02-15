@@ -52,9 +52,8 @@ return {
                         hl.TelescopeResultsBorder = { link = "FloatBorder" }
                         hl.TelescopePromptBorder = { link = "FloatBorder" }
 
-                        hl.IndentBlanklineContextChar =
-                        {
-                        -- nvim indent line
+                        hl.IndentBlanklineContextChar = {
+                            -- nvim indent line
                             fg = c.blue,
                             -- bg = c.blue,
                             nocombine = true,

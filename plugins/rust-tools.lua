@@ -31,9 +31,7 @@ return {
                     },
                     -- typing = { autoClosingAngleBrackets = { enable = true } }, -- this option seem not to work
                     -- hover = { actions = { references = { enable = true } } },
-                    inlayHints = {
-                        locationLinks = true,
-                    },
+                    inlayHints = { locationLinks = true },
                     diagnostics = {
                         enable = true,
                         experimental = { enable = true },

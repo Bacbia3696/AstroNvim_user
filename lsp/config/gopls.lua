@@ -8,7 +8,7 @@ return {
                 tidy = true,
                 vendor = false,
             },
-            usePlaceholders = true,
+            -- usePlaceholders = true,
         },
     },
 }

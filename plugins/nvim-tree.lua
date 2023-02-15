@@ -24,9 +24,7 @@ return {
         remove_keymaps = { "-", "<C-e>" },
         git = { ignore = false },
         view = {
-            float = {
-                enable = false,
-            },
+            float = { enable = false },
             mappings = {
                 list = {
                     { key = "<BS>",  action = "dir_up" },
