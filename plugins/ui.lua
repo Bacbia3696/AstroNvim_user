@@ -76,7 +76,7 @@ return {
             minimum_width = 50,
             render = "default",
             stages = "fade_in_slide_out",
-            timeout = 2000,
+            -- timeout = 2000,
             top_down = false,
         },
     },

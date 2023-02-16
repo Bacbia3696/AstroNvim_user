@@ -21,14 +21,18 @@ return {
     end,
     opts = { -- BEGIN_DEFAULT_OPTS
         sync_root_with_cwd = true,
-        remove_keymaps = { "-", "<C-e>" },
+        remove_keymaps = { "-", "<C-e>", "[c", "]c", "]e", "[e" },
         git = { ignore = false },
         view = {
             float = { enable = false },
             mappings = {
                 list = {
                     { key = "<BS>",  action = "dir_up" },
-                    { key = "<ESC>", actions = "close_node" },
+                    { key = "<ESC>", action = "close_node" },
+                    { key = "<]g>",  action = "next_git_item" },
+                    { key = "<[g>",  action = "prev_git_item" },
+                    { key = "<]d>",  action = "next_diag_item" },
+                    { key = "<[d>",  action = "prev_diag_item" },
                 },
             },
         },

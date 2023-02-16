@@ -48,8 +48,6 @@ map("n", "]D", function()
 end)
 map({ "n", "t" }, "<C-\\>", "<cmd>ToggleTerm<cr>")
 
-map({ "n", "i" }, "<M-c>", require("notify").dismiss)
-
 local dap = require('dap')
 
 local keymaps = {
@@ -65,11 +63,6 @@ local keymaps = {
     x = { [";"] = ":",["0"] = "^",["$"] = "g$" },
     o = { [";"] = ":",["0"] = "^",["$"] = "g$" },
     n = {
-
-        ["<leader>gg"] = {
-            function() require("core.utils").toggle_term_cmd "gitui" end,
-            desc = "ToggleTerm gitui",
-        },
         ["<leader>h"] = false,
         ["<leader>hh"] = "<cmd>Alpha<cr>",
         [";"] = ":",
@@ -90,10 +83,15 @@ local keymaps = {
         end,
 
         -- clear default
-        ["<C-l>"] = false,
+        ["<C-l>"] = function()
+            require("notify").dismiss {}
+            vim.cmd("noh")
+        end,
         ["<C-j>"] = false,
         ["<C-k>"] = false,
         ["<C-h>"] = false,
+        ["k"] = false,
+        ["j"] = false,
         ["<leader>e"] = false,
 
         -- TODO: this shoulbe move to dap toggle
@@ -115,6 +113,10 @@ local keymaps = {
         ["<leader>dl"] = dap.run_last,
         -- dapui
         ["<leader>dd"] = dap.toggle,
+        ["<leader>gg"] = {
+            function() require("core.utils").toggle_term_cmd "gitui" end,
+            desc = "ToggleTerm gitui",
+        },
 
         -- common
         ["<leader>1"] = "<cmd>Lazy<cr>",
@@ -143,6 +145,7 @@ local keymaps = {
         ["<M-b>"] = "<S-Left>",
         ["<M-f>"] = "<S-Right>",
     },
+    v = { ["k"] = false,["j"] = false },
 }
 
 -- save break points

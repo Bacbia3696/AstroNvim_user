@@ -37,7 +37,7 @@ local options = {
         -- spell = true, -- sets vim.opt.spell
     },
     g = {
-        highlighturl_enabled = true, -- highlight URLs by default
+        highlighturl_enabled = false, -- highlight URLs by default
         mapleader = " ", -- set leader key
         autoformat_enabled = false, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
         codelens_enabled = true, -- enable or disable automatic codelens refreshing for lsp that support it
