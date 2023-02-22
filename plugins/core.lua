@@ -30,11 +30,6 @@ return {
                 win_config = { winblend = 0 },
                 mappings = { switch = 'K', close = '<esc>' },
             },
-            provider_selector = function(_, filetype, buftype)
-                return
-                    (filetype == "" or buftype == "nofile") and "indent" -- only use indent until a file is opened
-                    or { "lsp", "indent" }
-            end,
             enable_get_fold_virt_text = true,
             fold_virt_text_handler = function(virtText, lnum, endLnum, width,
                                               truncate)

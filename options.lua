@@ -18,13 +18,13 @@ local options = {
         foldlevel = 99,
         foldlevelstart = 99,
         foldenable = true,
-        foldcolumn = '1',
+        foldcolumn = 'auto',
         syntax = "off",
         conceallevel = 0,
         wrap = true,
         linebreak = true,
-        showbreak = "↪ ",
-        -- ↵,→,~,↷,↶,·,¬,⇨⋄,‸,⇥,➜,⟫,➪,➭,⚬,⮐
+        -- showbreak = "↪ ",
+        -- ↵,→,~,↷,↶,·,¬,⇨⋄,‸,⇥,➜,⟫,➪,➭,⚬
         listchars = {
             tab = "➤ ",
             -- eol = "¬",

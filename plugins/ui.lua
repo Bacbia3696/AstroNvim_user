@@ -10,7 +10,6 @@ return {
         },
     },
     { "stevearc/dressing.nvim", opts = { input = { win_options = { winblend = 0 } } } },
-
     {
         "folke/tokyonight.nvim",
         lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -51,6 +50,7 @@ return {
                         hl.TelescopeBorder = { link = "FloatBorder" }
                         hl.TelescopeResultsBorder = { link = "FloatBorder" }
                         hl.TelescopePromptBorder = { link = "FloatBorder" }
+                        hl.AerialLine = { bg = c.grey_5 }
 
                         hl.IndentBlanklineContextChar = {
                             -- nvim indent line
@@ -64,7 +64,6 @@ return {
                     ["@namespace.rust"] = { fg = "#FF597B", bold = true },
                 },
             },
-            -- plugins = { ["neo-tree.nvim"] = false, ["nvim-tree.lua"] = false }, -- NOTE: why this not work
         },
     },
     {

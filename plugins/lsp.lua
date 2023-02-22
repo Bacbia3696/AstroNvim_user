@@ -21,4 +21,24 @@ return {
             keymap("n", "<C-k>", "<cmd>Lspsaga peek_definition<CR>")
         end,
     },
+    {
+        "stevearc/aerial.nvim",
+        filter_kind = true,
+        init = function() require('telescope').load_extension('aerial') end,
+        opts = {
+            highlight_on_hover = true,
+            keymaps = {
+                ["o"] = "actions.jump",
+                ["{"] = "actions.prev",
+                ["}"] = "actions.next",
+                ["[["] = "actions.prev_up",
+                ["]]"] = "actions.next_up",
+                ["[y"] = false,
+                ["]y"] = false,
+                ["[Y"] = false,
+                ["]Y"] = false,
+                ["?"] = false,
+            },
+        },
+    },
 }

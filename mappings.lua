@@ -26,26 +26,15 @@ map("n", "<leader>ps", "<cmd>PackerSync<cr>")
 map("n", "<leader>pS", "<cmd>PackerStatus<cr>")
 map("n", "<leader>pu", "<cmd>PackerUpdate<cr>")
 
-map("t", "<C-q>", [[<C-\><C-n>]])
+-- open file with default OS
 map("n", "so", [[:execute '!open %'<CR>]])
+-- copy current folder path
 map("n", "sp", [[:execute '!echo -n %:p:h | pbcopy'<CR>]])
+-- copy current file path
 map("n", "sf", [[:execute '!echo -n %:p | pbcopy'<CR>]])
+-- change dir to current folder
+map("n", "sc", [[:execute '!echo -n %:p:h | cd'<CR>]])
 
--- lsp mapping
-map({ "i", "n" }, "<C-h>", vim.lsp.buf.signature_help)
-map("n", "gi", "<cmd>Telescope lsp_implementations<cr>")
-map("n", "gt", "<cmd>Telescope lsp_type_definitions theme=dropdown<cr>")
-map("n", "<leader>rr", vim.lsp.codelens.run)
-map("n", "<leader>rn", vim.lsp.buf.rename)
-map("n", "go", vim.diagnostic.open_float)
-map("n", "[d", vim.diagnostic.goto_prev)
-map("n", "]d", vim.diagnostic.goto_next)
-map("n", "[D", function()
-    vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
-end)
-map("n", "]D", function()
-    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
-end)
 map({ "n", "t" }, "<C-\\>", "<cmd>ToggleTerm<cr>")
 
 local dap = require('dap')
@@ -59,6 +48,7 @@ local keymaps = {
         ["<C-j>"] = false,
         ["<C-k>"] = false,
         ["<C-h>"] = false,
+        ["<C-q>"] = "<C-\\><C-n>",
     },
     x = { [";"] = ":",["0"] = "^",["$"] = "g$" },
     o = { [";"] = ":",["0"] = "^",["$"] = "g$" },
@@ -85,6 +75,12 @@ local keymaps = {
         -- clear default
         ["<C-l>"] = function()
             require("notify").dismiss {}
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                local config = vim.api.nvim_win_get_config(win)
+                if config.relative ~= "" then -- is_floating_window?
+                    vim.api.nvim_win_close(win, false) -- do not force
+                end
+            end
             vim.cmd("noh")
         end,
         ["<C-j>"] = false,
@@ -123,6 +119,7 @@ local keymaps = {
         ["<leader>2"] = "<cmd>Mason<cr>",
         ["<leader>3"] = "<cmd>NvimTreeToggle<cr>",
         ["<leader>4"] = "<cmd>AerialToggle<cr>",
+        ["<leader>6"] = "<cmd>b#<cr>",
         ["<leader>q"] = false,
         ["<c-g>"] = "1<c-g>",
         ["<m-a>"] = "ggVG",
