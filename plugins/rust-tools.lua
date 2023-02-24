@@ -7,7 +7,7 @@ return {
         server = {
             cmd = { "rustup", "run", "nightly", "rust-analyzer" },
             on_attach = function(client, bufnr)
-                require("core.utils.lsp").on_attach(client, bufnr)
+                require("astronvim.utils.lsp").on_attach(client, bufnr)
 
                 vim.keymap.set("n", "<S-k>", function()
                     local winid = require('ufo').peekFoldedLinesUnderCursor()

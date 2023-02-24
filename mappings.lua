@@ -33,7 +33,7 @@ map("n", "sp", [[:execute '!echo -n %:p:h | pbcopy'<CR>]])
 -- copy current file path
 map("n", "sf", [[:execute '!echo -n %:p | pbcopy'<CR>]])
 -- change dir to current folder
-map("n", "sc", [[:execute '!echo -n %:p:h | cd'<CR>]])
+map("n", "sc", [[:execute 'cd %:p:h'<CR>]])
 
 map({ "n", "t" }, "<C-\\>", "<cmd>ToggleTerm<cr>")
 
@@ -130,6 +130,12 @@ local keymaps = {
         -- ["<leader>fb"] = ts.buffers,
         -- ["<leader>fw"] = ts.live_grep,
         ["<leader><leader>"] = { ts.builtin, desc = "Telescope builtin" },
+        -- neotest
+        ["<leader>tr"] = { require("neotest").run.run, desc = "Run unit test" },
+        ["<leader>tR"] = {
+            function() require("neotest").run.run(vim.fn.expand("%")) end,
+            desc = "Run unit test in whole file",
+        },
     },
     ["!"] = {
         -- emacs like binding
