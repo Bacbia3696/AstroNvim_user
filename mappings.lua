@@ -113,6 +113,10 @@ local keymaps = {
             function() require("core.utils").toggle_term_cmd "gitui" end,
             desc = "ToggleTerm gitui",
         },
+        ["<leader>gT"] = {
+            "<cmd>Gitsigns toggle_current_line_blame<cr>",
+            desc = "Toggle current line blame",
+        },
 
         -- common
         ["<leader>1"] = "<cmd>Lazy<cr>",
