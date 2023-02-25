@@ -110,7 +110,7 @@ local keymaps = {
         -- dapui
         ["<leader>dd"] = dap.toggle,
         ["<leader>gg"] = {
-            function() require("core.utils").toggle_term_cmd "gitui" end,
+            function() require("astronvim.utils").toggle_term_cmd "gitui" end,
             desc = "ToggleTerm gitui",
         },
         ["<leader>gT"] = {
@@ -136,9 +136,25 @@ local keymaps = {
         ["<leader><leader>"] = { ts.builtin, desc = "Telescope builtin" },
         -- neotest
         ["<leader>tr"] = { require("neotest").run.run, desc = "Run unit test" },
+        ["<leader>ts"] = {
+            require("neotest").summary.open,
+            desc = "Open neotest summary",
+        },
         ["<leader>tR"] = {
             function() require("neotest").run.run(vim.fn.expand("%")) end,
             desc = "Run unit test in whole file",
+        },
+        ["<leader>to"] = {
+            function() require("neotest").output.open() end,
+            desc = "Run unit test in whole file",
+        },
+        ["<leader>t]"] = {
+            require("neotest").jump.next,
+            desc = "Jump to next test",
+        },
+        ["<leader>t["] = {
+            require("neotest").jump.prev,
+            desc = "Jump to prev test",
         },
     },
     ["!"] = {

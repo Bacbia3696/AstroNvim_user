@@ -40,9 +40,5 @@ return {
         requires = "nvim-lua/plenary.nvim",
         config = function() require("coverage").setup() end,
     },
-    {
-        "klen/nvim-test",
-        lazy = false,
-        config = function() require('nvim-test').setup() end,
-    },
+    { "klen/nvim-test", config = function() require('nvim-test').setup() end },
 }

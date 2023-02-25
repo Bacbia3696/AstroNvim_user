@@ -27,6 +27,7 @@ return {
         init = function() require('telescope').load_extension('aerial') end,
         opts = {
             highlight_on_hover = true,
+            post_jump_cmd = false,
             keymaps = {
                 ["o"] = "actions.jump",
                 ["{"] = "actions.prev",
