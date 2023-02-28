@@ -27,7 +27,7 @@ return {
                         hl.GitSignsCurrentLineBlame = { fg = c.cyan }
                         -- hl.Visual = { fg = c.none, bg = c.grey_1 }
                         -- hl.VisualNOS = { fg = c.grey_1, bg = c.none }
-                        -- hl.WinSeparator = { bg = c.none, fg = c.blue }
+                        hl.WinSeparator = { bg = c.none, fg = c.blue }
                         hl.Folded = { bg = "#00425A" }
                         hl.FoldColumn = {
                             fg = c.grey_2,
