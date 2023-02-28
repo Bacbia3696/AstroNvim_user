@@ -110,7 +110,9 @@ local keymaps = {
         -- dapui
         ["<leader>dd"] = dap.toggle,
         ["<leader>gg"] = {
-            function() require("astronvim.utils").toggle_term_cmd "gitui" end,
+            function()
+                require("astronvim.utils").toggle_term_cmd "gitui"
+            end,
             desc = "ToggleTerm gitui",
         },
         ["<leader>gT"] = {
@@ -156,6 +158,7 @@ local keymaps = {
             require("neotest").jump.prev,
             desc = "Jump to prev test",
         },
+        ["<leader>th"] = { "<cmd>Coverage<cr>", desc = "Toggle show converage" },
     },
     ["!"] = {
         -- emacs like binding

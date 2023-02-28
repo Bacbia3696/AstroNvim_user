@@ -26,8 +26,9 @@ return {
         filter_kind = true,
         init = function() require('telescope').load_extension('aerial') end,
         opts = {
+            backends = { "treesitter", "lsp", "markdown", "man" },
             highlight_on_hover = true,
-            post_jump_cmd = false,
+            link_tree_to_folds = false,
             keymaps = {
                 ["o"] = "actions.jump",
                 ["{"] = "actions.prev",

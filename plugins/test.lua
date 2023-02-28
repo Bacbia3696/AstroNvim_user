@@ -2,11 +2,11 @@ return {
     {
         "nvim-neotest/neotest",
         lazy = false,
+        pin = true,
         dependencies = {
-            "nvim-neotest/neotest-go",
+            "bacbia3696/neotest-go",
             "rouge8/neotest-rust",
             "nvim-neotest/neotest-plenary",
-            -- Your other test adapters here
         },
         config = function()
             -- get neotest namespace (api call creates or returns namespace)
@@ -25,20 +25,16 @@ return {
                 -- your neotest config here
                 adapters = {
                     require("neotest-go")({
-                        experimental = { test_table = false },
+                        experimental = { test_table = true },
                         args = { "-count=1", "-timeout=60s" },
                     }),
                     require("neotest-plenary"),
                     require("neotest-rust"),
                 },
+                icons = { running_animated = { "◐", "◓", "◑", "◒" } },
             })
         end,
     },
-    {
-        lazy = false,
-        "andythigpen/nvim-coverage",
-        requires = "nvim-lua/plenary.nvim",
-        config = function() require("coverage").setup() end,
-    },
-    { "klen/nvim-test", config = function() require('nvim-test').setup() end },
+    { "andythigpen/nvim-coverage", lazy = false, opts = { auto_reload = true } },
+    -- { "klen/nvim-test", lazy = false, opts = { term = "toggleterm" } },
 }

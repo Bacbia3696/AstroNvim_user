@@ -2,6 +2,7 @@ return {
     -- NOTE: customize default plugins
     { "max397574/better-escape.nvim", enabled = false },
     { "nvim-neo-tree/neo-tree.nvim",  enabled = false },
+    { "NMAC427/guess-indent.nvim",    enabled = false },
     {
         "tpope/vim-surround", -- select surround
         event = "BufEnter",
