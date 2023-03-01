@@ -18,11 +18,14 @@ return {
         "AstroNvim/astrotheme",
         config = function(_, opts) require("astrotheme").setup(opts) end,
         opts = {
-            -- palettes = { astrodark = { bg = "NONE" } },
+            palettes = { astrodark = { bg = "NONE" } },
             highlights = {
                 astrodark = {
                     modify_hl_groups = function(hl, c) -- modify_hl_groups function allows you to modify hl groups,
-                        -- hl.NormalNC = { bg = c.bg } -- transparent background
+                        hl.NormalNC = { bg = c.bg } -- transparent background
+                        hl.NvimTreeNormalNC = { bg = c.bg_2 }
+                        hl.NvimTreeNormal = { bg = c.bg_2 }
+
                         -- hl.NotifyBackground = { bg = c.bg_1 } -- fix nvim notify error
                         hl.GitSignsCurrentLineBlame = { fg = c.cyan }
                         -- hl.Visual = { fg = c.none, bg = c.grey_1 }
@@ -42,9 +45,10 @@ return {
                         -- hl.LspReferenceRead = { fg = c.none, bg = c.grey_7 }
                         hl.LspReferenceWrite = { fg = c.none, bg = c.grey_7 }
                         hl.LspSignatureActiveParameter = { bg = c.grey_1 } -- nvim lsp signature
+                        hl.NoiceLspProgressTitle = {fg = c.yellow}
 
-                        hl.NvimTreeNormalNC = { bg = c.bg_2 }
-                        hl.NvimTreeNormal = { bg = c.bg_2 }
+
+                        hl.NvimTreeRootFolder = { fg = c.cyan, italic = true }
 
                         hl.TelescopePreviewBorder = { link = "FloatBorder" }
                         hl.TelescopeBorder = { link = "FloatBorder" }

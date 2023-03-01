@@ -49,7 +49,7 @@ return {
             view_error = "notify", -- view for errors
             view_warn = "notify", -- view for warnings
             view_history = "messages", -- view for :messages
-            view_search = false, -- view for search count messages. Set to `false` to disable
+            view_search = "virtualtext", -- view for search count messages. Set to `false` to disable
         },
         popupmenu = {
             enabled = true, -- enables the Noice popupmenu UI
@@ -115,7 +115,7 @@ return {
         },
         lsp = {
             progress = {
-                enabled = false,
+                enabled = true,
                 -- Lsp Progress is formatted using the builtins for lsp_progress. See config.format.builtin
                 -- See the section on formatting for more details on how to customize.
                 --- @type NoiceFormat|string
@@ -127,14 +127,14 @@ return {
             },
             override = {
                 -- override the default lsp markdown formatter with Noice
-                ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                ["vim.lsp.util.convert_input_to_markdown_lines"] = false,
                 -- override the lsp markdown formatter with Noice
                 ["vim.lsp.util.stylize_markdown"] = false,
                 -- override cmp documentation with Noice (needs the other options to work)
-                ["cmp.entry.get_documentation"] = true,
+                ["cmp.entry.get_documentation"] = false,
             },
             hover = {
-                enabled = false,
+                enabled = true,
                 view = nil, -- when nil, use defaults from documentation
                 ---@type NoiceViewOptions
                 opts = {}, -- merged with defaults from documentation
@@ -199,13 +199,16 @@ return {
             -- you can also add custom presets that you can enable/disable with enabled=true
             bottom_search = false, -- use a classic bottom cmdline for search
             command_palette = true, -- position the cmdline and popupmenu together
-            long_message_to_split = true, -- long messages will be sent to a split
+            long_message_to_split = false, -- long messages will be sent to a split
             inc_rename = false, -- enables an input dialog for inc-rename.nvim
             lsp_doc_border = true, -- add a border to hover docs and signature help
         },
         throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
         ---@type NoiceConfigViews
-        views = {}, ---@see section on views
+        views = {
+            mini = { win_options = { winblend = 0 }, zindex = 40 },
+            hover = { border = { padding = { 0, 0 } } },
+        }, ---@see section on views
         ---@type NoiceRouteConfig[]
         routes = {}, --- @see section on routes
         ---@type table<string, NoiceFilter>
@@ -213,9 +216,4 @@ return {
         ---@type NoiceFormatOptions
         format = {}, --- @see section on formatting
     },
-    -- config = function()
-    --     require("noice").setup({
-    --         -- add any options here
-    --     })
-    -- end,
 }
