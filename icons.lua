@@ -1,7 +1,7 @@
 return {
-  ActiveTS = "🎄",
-  FileReadOnly = "🔒",
-  MacroRecording = "🎬",
-  Search = "🔎",
-  FoldClosed = ">",
+	ActiveTS = "🎄",
+	FileReadOnly = "🔒",
+	MacroRecording = "🎬",
+	Search = "🔎",
+	FoldClosed = ">",
 }
