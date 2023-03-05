@@ -47,7 +47,8 @@ return {
 						-- hl.LspReferenceRead = { fg = c.none, bg = c.grey_7 }
 						hl.LspReferenceWrite = { fg = c.none, bg = c.grey_7 }
 						hl.LspSignatureActiveParameter = { bg = c.grey_1 } -- nvim lsp signature
-						hl.NoiceLspProgressTitle = { fg = c.yellow }
+						hl.NoiceLspProgressTitle = { fg = c.purple, italic = true }
+						hl.NoiceLspProgressSpinner = { fg = "#FF7B54", bold = true }
 
 						hl.NvimTreeRootFolder = { fg = c.cyan, italic = true }
 

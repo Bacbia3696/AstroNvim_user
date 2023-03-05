@@ -206,7 +206,7 @@ return {
 		throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
 		---@type NoiceConfigViews
 		views = {
-			mini = { win_options = { winblend = 0 }, zindex = 40 },
+			mini = { win_options = { winblend = 0 } },
 			hover = { border = { padding = { 0, 0 } } },
 		}, ---@see section on views
 		---@type NoiceRouteConfig[]
@@ -214,6 +214,12 @@ return {
 		---@type table<string, NoiceFilter>
 		status = {}, --- @see section on statusline components
 		---@type NoiceFormatOptions
-		format = {}, --- @see section on formatting
+		format = {
+			spinner = {
+				---@type Spinner
+				name = "aesthetic",
+				hl_group = nil,
+			},
+		}, --- @see section on formatting
 	},
 }

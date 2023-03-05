@@ -37,6 +37,7 @@ return {
 					diagnostics = {
 						enable = true,
 						experimental = { enable = true },
+						disabled = { "unresolved-proc-macro" },
 					},
 					check = {
 						command = "clippy",
@@ -51,7 +52,4 @@ return {
 			},
 		},
 	},
-	config = function(_, opts)
-		require("rust-tools").setup(opts)
-	end,
 }

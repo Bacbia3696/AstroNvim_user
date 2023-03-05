@@ -97,7 +97,7 @@ n["<C-l>"] = {
 		for _, win in ipairs(vim.api.nvim_list_wins()) do
 			local ok, config = pcall(vim.api.nvim_win_get_config, win)
 			if ok and config.relative ~= "" then -- is_floating_window?
-				vim.api.nvim_win_close(win, false) -- do not force
+				vim.api.nvim_win_close(win, true)
 			end
 		end
 		vim.cmd("noh")

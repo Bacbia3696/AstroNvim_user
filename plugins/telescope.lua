@@ -4,6 +4,7 @@ return {
 		defaults = { prompt_prefix = "🔭 " },
 		pickers = {
 			lsp_references = { include_declaration = false, show_line = false },
+			lsp_implementations = { show_line = false },
 			find_files = {
 				find_command = {
 					"rg",
