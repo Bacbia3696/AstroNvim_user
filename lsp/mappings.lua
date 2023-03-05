@@ -6,12 +6,15 @@ m.n["ga"] = {
 	desc = "LSP code action",
 }
 m.v["ga"] = m.n["ga"]
-m.n["K"] = function()
-	local winid = require("ufo").peekFoldedLinesUnderCursor()
-	if not winid then
-		vim.lsp.buf.hover()
-	end
-end
+m.n["K"] = {
+	function()
+		local winid = require("ufo").peekFoldedLinesUnderCursor()
+		if not winid then
+			vim.lsp.buf.hover()
+		end
+	end,
+	desc = "Lsp hover",
+}
 m.n["<C-h>"] = { vim.lsp.buf.signature_help, desc = "LSP Signature Help" }
 m.i["<C-h>"] = m.n["<C-h>"]
 m.n["gi"] = {

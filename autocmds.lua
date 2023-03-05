@@ -1,6 +1,10 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
+local function set_quit_keymap(buf)
+	vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = buf, silent = true, nowait = true })
+end
+
 autocmd("FileType", {
 	desc = "Make q or esc close help, man, quickfix, dap floats",
 	group = augroup("q_close_windows", { clear = true }),
@@ -13,7 +17,17 @@ autocmd("FileType", {
 		"neotest-output",
 	},
 	callback = function(event)
-		vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true, nowait = true })
+		set_quit_keymap(event.buf)
+	end,
+})
+
+autocmd("BufEnter", {
+	desc = "Make q or esc empty filetype window",
+	pattern = "*",
+	callback = function(event)
+		if vim.o.filetype == "" then
+			set_quit_keymap(event.buf)
+		end
 	end,
 })
 

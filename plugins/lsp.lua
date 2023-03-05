@@ -1,8 +1,8 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		init = function()
-			table.insert(astronvim.file_plugins, "nvim-lspconfig")
+		config = function()
+			require("plugins.configs.lspconfig")()
 			require("lspconfig.ui.windows").default_options.border = "rounded"
 		end,
 	},
@@ -17,7 +17,7 @@ return {
 		},
 		init = function()
 			local keymap = vim.keymap.set
-			keymap({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
+			keymap({ "n", "v" }, "<leader>lA", "<cmd>Lspsaga code_action<CR>")
 			keymap("n", "<C-k>", "<cmd>Lspsaga peek_definition<CR>")
 		end,
 	},
@@ -28,7 +28,7 @@ return {
 			require("telescope").load_extension("aerial")
 		end,
 		opts = {
-			backends = { "treesitter", "lsp", "markdown", "man" },
+			backends = { "lsp", "treesitter", "markdown", "man" },
 			highlight_on_hover = true,
 			link_tree_to_folds = false,
 			keymaps = {

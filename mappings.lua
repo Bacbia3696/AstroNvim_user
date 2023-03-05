@@ -52,26 +52,35 @@ t["<C-q>"] = "<C-\\><C-n>"
 t["<C-\\>"] = "<cmd>ToggleTerm<cr>"
 
 -- NORMAL MODE
+n["g?"] = "<cmd>WhichKey<cr>"
+n["<C-w> "] = {
+	require("smart-splits").start_resize_mode,
+	desc = "Start resize mode",
+}
 n["<leader>q"] = { "<cmd>qa<cr>", desc = "quit all window" }
 n["<C-\\>"] = "<cmd>ToggleTerm<cr>"
-n["<leader>h"] = false
 n["<C-s>"] = false
-n["<leader>hh"] = "<cmd>Alpha<cr>"
+-- n["<leader>h"] = false
+-- n["<leader>hh"] = "<cmd>Alpha<cr>"
 -- faster scrolling
 n["<C-e>"] = "3<C-e>"
 n["<C-y>"] = "3<C-y>"
 do -- utilities for manage path in clipboard
+	n["s"] = { name = " Path manipulation" }
 	n["so"] = [[:execute '!open %'<CR>]]
 	n["sp"] = [[:execute '!echo -n %:p:h | pbcopy'<CR>]]
 	n["sf"] = [[:execute '!echo -n %:p | pbcopy'<CR>]]
 	n["sc"] = [[:execute 'cd %:p:h'<CR>]]
-	n["sd"] = function()
-		local line = vim.fn.expand("%:p") .. ":" .. vim.fn.line(".")
-		local command = "echo -n '" .. line .. "' | pbcopy"
-		command = "!" .. vim.fn.escape(command, "!")
-		print(command)
-		vim.fn.execute(command)
-	end
+	n["sd"] = {
+		function()
+			local line = vim.fn.expand("%:p") .. ":" .. vim.fn.line(".")
+			local command = "echo -n '" .. line .. "' | pbcopy"
+			command = "!" .. vim.fn.escape(command, "!")
+			print(command)
+			vim.fn.execute(command)
+		end,
+		desc = "copy file and line number",
+	}
 end
 do
 	n["<C-j>"] = false
@@ -82,16 +91,19 @@ do
 	n["<leader>e"] = false
 end
 -- remove highlight and close floating window
-n["<C-l>"] = function()
-	require("notify").dismiss({})
-	for _, win in ipairs(vim.api.nvim_list_wins()) do
-		local ok, config = pcall(vim.api.nvim_win_get_config, win)
-		if ok and config.relative ~= "" then -- is_floating_window?
-			vim.api.nvim_win_close(win, false) -- do not force
+n["<C-l>"] = {
+	function()
+		require("notify").dismiss({})
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			local ok, config = pcall(vim.api.nvim_win_get_config, win)
+			if ok and config.relative ~= "" then -- is_floating_window?
+				vim.api.nvim_win_close(win, false) -- do not force
+			end
 		end
-	end
-	vim.cmd("noh")
-end
+		vim.cmd("noh")
+	end,
+	desc = "Clear window",
+}
 do -- dap
 	-- TODO: this shoulbe move to dap attach function
 	n["<F5>"] = dap.continue

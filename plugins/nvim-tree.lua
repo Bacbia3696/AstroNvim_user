@@ -30,14 +30,14 @@ local on_attach = function(bufnr)
 	vim.keymap.set("n", "B", api.tree.toggle_no_buffer_filter, opts("Toggle No Buffer"))
 	vim.keymap.set("n", "c", api.fs.copy.node, opts("Copy"))
 	vim.keymap.set("n", "C", api.tree.toggle_git_clean_filter, opts("Toggle Git Clean"))
-	vim.keymap.set("n", "[c", api.node.navigate.git.prev, opts("Prev Git"))
-	vim.keymap.set("n", "]c", api.node.navigate.git.next, opts("Next Git"))
+	vim.keymap.set("n", "[g", api.node.navigate.git.prev, opts("Prev Git"))
+	vim.keymap.set("n", "]g", api.node.navigate.git.next, opts("Next Git"))
 	vim.keymap.set("n", "d", api.fs.remove, opts("Delete"))
 	vim.keymap.set("n", "D", api.fs.trash, opts("Trash"))
 	vim.keymap.set("n", "E", api.tree.expand_all, opts("Expand All"))
 	vim.keymap.set("n", "e", api.fs.rename_basename, opts("Rename: Basename"))
-	vim.keymap.set("n", "]e", api.node.navigate.diagnostics.next, opts("Next Diagnostic"))
-	vim.keymap.set("n", "[e", api.node.navigate.diagnostics.prev, opts("Prev Diagnostic"))
+	vim.keymap.set("n", "]d", api.node.navigate.diagnostics.next, opts("Next Diagnostic"))
+	vim.keymap.set("n", "[d", api.node.navigate.diagnostics.prev, opts("Prev Diagnostic"))
 	vim.keymap.set("n", "F", api.live_filter.clear, opts("Clean Filter"))
 	vim.keymap.set("n", "f", api.live_filter.start, opts("Filter"))
 	vim.keymap.set("n", "g?", api.tree.toggle_help, opts("Help"))
@@ -88,7 +88,6 @@ return {
 	end,
 	opts = { -- BEGIN_DEFAULT_OPTS
 		sync_root_with_cwd = true,
-		remove_keymaps = { "-", "<C-e>", "[c", "]c", "]e", "[e" },
 		git = { ignore = true, enable = true, timeout = 500 },
 		on_attach = on_attach,
 		renderer = {

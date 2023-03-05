@@ -7,12 +7,19 @@ return {
 			return
 		end
 		pkg.setup()
-		vim.cmd([[
-    nnoremap <leader>ss <cmd>lua require('spectre').open()<CR>
-    vnoremap <leader>s <cmd>lua require('spectre').open_visual()<CR>
-    "search current word
-    nnoremap <leader>sw <cmd>lua require('spectre').open_visual({select_word=true})<CR>
-    "  search in current file
-    nnoremap <leader>sf viw:lua require('spectre').open_file_search()<cr>]])
+		local utils = require("astronvim.utils")
+		utils.set_mappings({
+			n = {
+				["<leader>s"] = { name = " Spectre" },
+				["<leader>ss"] = pkg.open,
+				["<leader>sw"] = function()
+					pkg.open_visual({ select_word = true })
+				end,
+				["<leader>sf"] = pkg.open_file_search,
+			},
+			v = {
+				["<leader>s"] = pkg.open_visual,
+			},
+		})
 	end,
 }
