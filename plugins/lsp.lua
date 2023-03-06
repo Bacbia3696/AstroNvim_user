@@ -15,11 +15,6 @@ return {
 			symbol_in_winbar = { enable = false },
 			ui = { border = "rounded" },
 		},
-		init = function()
-			local keymap = vim.keymap.set
-			keymap({ "n", "v" }, "<leader>lA", "<cmd>Lspsaga code_action<CR>")
-			keymap("n", "<C-k>", "<cmd>Lspsaga peek_definition<CR>")
-		end,
 	},
 	{
 		"stevearc/aerial.nvim",
@@ -44,5 +39,11 @@ return {
 				["?"] = false,
 			},
 		},
+	},
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		opts = function()
+			return { on_attach = require("astronvim.utils.lsp").on_attach, border = "rounded" }
+		end,
 	},
 }

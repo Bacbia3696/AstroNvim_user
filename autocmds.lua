@@ -13,6 +13,7 @@ autocmd("FileType", {
 		"help",
 		"man",
 		"dap-float",
+		"fugitiveblame",
 		"neotest-summary",
 		"neotest-output",
 	},

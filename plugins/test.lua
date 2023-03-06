@@ -2,9 +2,8 @@ return {
 	{
 		"nvim-neotest/neotest",
 		lazy = false,
-		pin = true,
 		dependencies = {
-			"bacbia3696/neotest-go",
+			"nvim-neotest/neotest-go",
 			"rouge8/neotest-rust",
 			"nvim-neotest/neotest-plenary",
 		},
@@ -35,5 +34,4 @@ return {
 		end,
 	},
 	{ "andythigpen/nvim-coverage", lazy = false, opts = { auto_reload = true } },
-	-- { "klen/nvim-test", lazy = false, opts = { term = "toggleterm" } },
 }

@@ -9,7 +9,25 @@ return {
 			end,
 		},
 	},
-	{ "stevearc/dressing.nvim", opts = { input = { win_options = { winblend = 0 } } } },
+	{
+		"stevearc/dressing.nvim",
+		opts = {
+			input = {
+				default_prompt = "➤ ",
+				win_options = { winhighlight = "Normal:Normal,NormalNC:Normal", winblend = 0 },
+			},
+			select = {
+				backend = { "telescope", "builtin" },
+				telescope = require("telescope.themes").get_cursor({
+					layout_config = {
+						width = 50,
+						height = 9,
+					},
+				}),
+				builtin = { win_options = { winhighlight = "Normal:Normal,NormalNC:Normal" } },
+			},
+		},
+	},
 	{
 		"folke/tokyonight.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -48,7 +66,7 @@ return {
 						hl.LspReferenceWrite = { fg = c.none, bg = c.grey_7 }
 						hl.LspSignatureActiveParameter = { bg = c.grey_1 } -- nvim lsp signature
 						hl.NoiceLspProgressTitle = { fg = c.purple, italic = true }
-						hl.NoiceLspProgressSpinner = { fg = "#FF7B54", bold = true }
+						hl.NoiceLspProgressSpinner = { fg = c.green }
 
 						hl.NvimTreeRootFolder = { fg = c.cyan, italic = true }
 
@@ -56,6 +74,8 @@ return {
 						hl.TelescopeBorder = { link = "FloatBorder" }
 						hl.TelescopeResultsBorder = { link = "FloatBorder" }
 						hl.TelescopePromptBorder = { link = "FloatBorder" }
+						hl.NullLsInfoBorder = { link = "FloatBorder" }
+						hl.LspInfoBorder = { link = "FloatBorder" }
 						hl.AerialLine = { bg = c.grey_5 }
 
 						hl.IndentBlanklineContextChar = {
@@ -82,7 +102,7 @@ return {
 			render = "default",
 			stages = "fade_in_slide_out",
 			-- timeout = 2000,
-			top_down = false,
+			-- top_down = false,
 		},
 	},
 }
