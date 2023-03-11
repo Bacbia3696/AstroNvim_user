@@ -210,7 +210,13 @@ return {
 			hover = { border = { padding = { 0, 0 } } },
 		}, ---@see section on views
 		---@type NoiceRouteConfig[]
-		routes = {}, --- @see section on routes
+		routes = {
+		    -- route message min_height > 50 to split view
+			{
+				view = "split",
+				filter = { event = "msg_show", min_height = 50 },
+			},
+		}, --- @see section on routes
 		---@type table<string, NoiceFilter>
 		status = {}, --- @see section on statusline components
 		---@type NoiceFormatOptions

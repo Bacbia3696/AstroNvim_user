@@ -76,7 +76,7 @@ return {
 			---@diagnostic disable-next-line: unused-local
 			local real_file = vim.fn.filereadable(data.file) == 1
 			local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
-			if no_name then
+			if no_name or data.file:find("/private/tmp", 1, true) or vim.bo.filetype == "gitcommit" then
 				return
 			end
 			require("nvim-tree.api").tree.toggle({
