@@ -211,10 +211,10 @@ return {
 		}, ---@see section on views
 		---@type NoiceRouteConfig[]
 		routes = {
-		    -- route message min_height > 50 to split view
+		    -- route long message to split view
 			{
 				view = "split",
-				filter = { event = "msg_show", min_height = 50 },
+				filter = { event = "msg_show", min_height = 30 },
 			},
 		}, --- @see section on routes
 		---@type table<string, NoiceFilter>

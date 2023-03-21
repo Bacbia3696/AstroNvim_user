@@ -38,7 +38,7 @@ return {
 			require("astrotheme").setup(opts)
 		end,
 		opts = {
-			palettes = { astrodark = { bg = "NONE" } },
+			palettes = { astrodark = { bg = "NONE", docker = "#61afef" } },
 			highlights = {
 				astrodark = {
 					modify_hl_groups = function(hl, c) -- modify_hl_groups function allows you to modify hl groups,

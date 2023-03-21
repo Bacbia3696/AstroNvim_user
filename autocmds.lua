@@ -16,6 +16,7 @@ autocmd("FileType", {
 		"fugitiveblame",
 		"neotest-summary",
 		"neotest-output",
+		"httpResult",
 	},
 	callback = function(event)
 		set_quit_keymap(event.buf)

@@ -76,9 +76,15 @@ return {
 			---@diagnostic disable-next-line: unused-local
 			local real_file = vim.fn.filereadable(data.file) == 1
 			local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
-			if no_name or data.file:find("/private/tmp", 1, true) or vim.bo.filetype == "gitcommit" then
+			if
+				no_name
+				or data.file:find("/private/tmp", 1, true)
+				or data.file:find("/Users/nguyenthanhdat/.mongodb/mongosh/editor", 1, true)
+				or vim.bo.filetype == "gitcommit"
+			then
 				return
 			end
+			vim.pretty_print(data.file)
 			require("nvim-tree.api").tree.toggle({
 				focus = false,
 				find_file = true,
@@ -88,7 +94,7 @@ return {
 	end,
 	opts = { -- BEGIN_DEFAULT_OPTS
 		sync_root_with_cwd = true,
-		git = { ignore = true, enable = true, timeout = 500 },
+		git = { ignore = false, enable = true, timeout = 500 },
 		on_attach = on_attach,
 		renderer = {
 			add_trailing = false,
