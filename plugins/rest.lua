@@ -2,6 +2,22 @@ return {
 	"rest-nvim/rest.nvim",
 	requires = { "nvim-lua/plenary.nvim" },
 	lazy = false,
+	keys = {
+		{
+			"<leader>rr",
+			function()
+				require("rest-nvim").run()
+			end,
+			desc = "Send Rest request",
+		},
+		{
+			"<leader>rl",
+			function()
+				require("rest-nvim").last()
+			end,
+			desc = "Send last Rest request",
+		},
+	},
 	opts = {
 		-- Open request results in a horizontal split
 		result_split_horizontal = false,
@@ -28,14 +44,4 @@ return {
 		custom_dynamic_variables = {},
 		yank_dry_run = true,
 	},
-	config = function(_, opts)
-		local rest = require("rest-nvim")
-		rest.setup(opts)
-		require("astronvim.utils").set_mappings({
-			n = {
-				["<leader>rr"] = rest.run,
-				["<leader>rl"] = rest.last,
-			},
-		})
-	end,
 }

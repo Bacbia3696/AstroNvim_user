@@ -1,6 +1,5 @@
 return {
 	"windwp/nvim-spectre",
-	event = "BufEnter",
 	config = function()
 		local spectre = require("spectre")
 		spectre.setup()

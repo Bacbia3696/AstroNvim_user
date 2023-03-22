@@ -21,20 +21,16 @@ return {
 		event = "BufEnter",
 	},
 	{
-		"metakirby5/codi.vim", -- interactive environment for coding
-		cmd = { "Codi", "Codi", "CodiNew", "CodiExpand" },
-		{
-			"folke/which-key.nvim",
-			event = "VeryLazy",
-			opts = {
-				icons = { group = vim.g.icons_enabled and "" or "+", separator = "" },
-				window = {
-					border = "rounded", -- none, single, double, shadow
-				},
-				disable = { filetypes = { "TelescopePrompt" } },
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			icons = { group = vim.g.icons_enabled and "" or "+", separator = "" },
+			window = {
+				border = "rounded", -- none, single, double, shadow
 			},
-			config = require("plugins.configs.which-key"),
+			disable = { filetypes = { "TelescopePrompt" } },
 		},
+		config = require("plugins.configs.which-key"),
 	},
 	{
 		"kevinhwang91/nvim-ufo",
