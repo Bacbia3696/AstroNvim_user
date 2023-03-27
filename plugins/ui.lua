@@ -38,13 +38,16 @@ return {
 			require("astrotheme").setup(opts)
 		end,
 		opts = {
-			palettes = { astrodark = { bg = "NONE", docker = "#61afef" } },
+			palette = "astrodark",
+			palettes = { astrodark = { base = "NONE", docker = "#61afef" } },
 			highlights = {
 				astrodark = {
 					modify_hl_groups = function(hl, c) -- modify_hl_groups function allows you to modify hl groups,
-						hl.NormalNC = { bg = c.bg } -- transparent background
-						hl.NvimTreeNormalNC = { bg = c.bg_2 }
-						hl.NvimTreeNormal = { bg = c.bg_2 }
+						-- transparent background
+						hl.Normal = { bg = c.none }
+						hl.NormalNC = { bg = c.none }
+						hl.NvimTreeNormalNC = { bg = c.none }
+						hl.NvimTreeNormal = { bg = c.none }
 
 						-- hl.NotifyBackground = { bg = c.bg_1 } -- fix nvim notify error
 						hl.GitSignsCurrentLineBlame = { fg = c.cyan }

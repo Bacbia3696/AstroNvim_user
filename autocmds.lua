@@ -33,10 +33,10 @@ autocmd("BufEnter", {
 	end,
 })
 
-autocmd("FileType", {
-	desc = "Change indent",
-	pattern = { "javascript", "typescript", "json" },
-	callback = function()
-		vim.cmd([[setlocal shiftwidth=2 softtabstop=2 expandtab]])
-	end,
-})
+-- autocmd("FileType", {
+-- 	desc = "Change indent",
+-- 	pattern = { "javascript", "typescript", "json" },
+-- 	callback = function()
+-- 		vim.cmd([[setlocal shiftwidth=2 softtabstop=2 expandtab]])
+-- 	end,
+-- })
