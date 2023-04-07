@@ -3,6 +3,15 @@ return {
 	{ "max397574/better-escape.nvim", enabled = false },
 	{ "nvim-neo-tree/neo-tree.nvim", enabled = false },
 	{ "NMAC427/guess-indent.nvim", enabled = false },
+
+	{
+		"dhruvasagar/vim-table-mode",
+		lazy = false,
+		init = function()
+			vim.api.nvim_set_var("table_mode_corner_corner", "+")
+			vim.api.nvim_set_var("table_mode_header_fillchar", "=")
+		end,
+	},
 	{
 		"tpope/vim-surround", -- select surround
 		event = "BufEnter",

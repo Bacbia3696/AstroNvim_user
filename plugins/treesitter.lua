@@ -33,7 +33,7 @@ return {
 					node_decremental = "<bs>",
 				},
 			},
-			indent = { enable = false },
+			indent = { enable = true },
 			matchup = { enable = true },
 			textobjects = {
 				select = {

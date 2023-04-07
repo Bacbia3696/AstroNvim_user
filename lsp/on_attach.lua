@@ -15,11 +15,6 @@ return function(client, buf)
 					buffer = buf,
 					desc = "Go to lsp references exclude test file",
 				},
-				["go"] = {
-					"<cmd>Lspsaga show_line_diagnostics<cr>",
-					buffer = buf,
-					desc = "Diagnostic open_float",
-				},
 			},
 		})
 	end

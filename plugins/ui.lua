@@ -66,7 +66,7 @@ return {
 						-- more readable for lsp LspReference
 						-- hl.LspReferenceText = { fg = c.none, bg = c.grey_7 }
 						-- hl.LspReferenceRead = { fg = c.none, bg = c.grey_7 }
-						hl.LspReferenceWrite = { fg = c.none, bg = c.grey_7 }
+						-- hl.LspReferenceWrite = { fg = c.none, bg = c.grey_7 }
 						hl.LspSignatureActiveParameter = { bg = c.grey_1 } -- nvim lsp signature
 						hl.NoiceLspProgressTitle = { fg = c.purple, italic = true }
 						hl.NoiceLspProgressSpinner = { fg = c.green }
@@ -79,7 +79,7 @@ return {
 						hl.TelescopePromptBorder = { link = "FloatBorder" }
 						hl.NullLsInfoBorder = { link = "FloatBorder" }
 						hl.LspInfoBorder = { link = "FloatBorder" }
-						hl.AerialLine = { bg = c.grey_5 }
+						hl.AerialLine = { link = "LspReferenceText" }
 
 						hl.IndentBlanklineContextChar = {
 							-- nvim indent line

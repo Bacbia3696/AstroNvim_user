@@ -84,7 +84,6 @@ return {
 			then
 				return
 			end
-			vim.pretty_print(data.file)
 			require("nvim-tree.api").tree.toggle({
 				focus = false,
 				find_file = true,
@@ -92,7 +91,7 @@ return {
 		end
 		vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
 	end,
-	opts = { -- BEGIN_DEFAULT_OPTS
+	opts = {
 		sync_root_with_cwd = true,
 		git = { ignore = false, enable = true, timeout = 500 },
 		on_attach = on_attach,
@@ -187,7 +186,7 @@ return {
 				global = true,
 				restrict_above_cwd = false,
 			},
-			expand_all = { max_folder_discovery = 300, exclude = {} },
+			expand_all = { max_folder_discovery = 100, exclude = {} },
 			file_popup = {
 				open_win_config = {
 					col = 1,

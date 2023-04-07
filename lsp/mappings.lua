@@ -27,8 +27,8 @@ m.n["gt"] = {
 }
 m.n["go"] = { vim.diagnostic.open_float, desc = "diagnostic open_float" }
 -- m.n["go"] = { "<cmd>Lspsaga show_line_diagnostics<cr>", desc = "diagnostic open_float" }
-m.n["<C-k>"] = "<cmd>Lspsaga peek_definition<cr>"
-m.n["<leader>lA"] = "<cmd>Lspsaga code_action<cr>"
+-- m.n["<C-k>"] = "<cmd>Lspsaga peek_definition<cr>"
+-- m.n["<leader>lA"] = "<cmd>Lspsaga code_action<cr>"
 m.n["]d"] = { vim.diagnostic.goto_next, desc = "diagnostic goto next" }
 m.n["[d"] = { vim.diagnostic.goto_prev, desc = "diagnostic goto prev" }
 m.n["[D"] = {

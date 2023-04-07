@@ -6,16 +6,16 @@ return {
 			require("lspconfig.ui.windows").default_options.border = "rounded"
 		end,
 	},
-	{
-		"glepnir/lspsaga.nvim",
-		event = "BufRead",
-		dependencies = { { "nvim-tree/nvim-web-devicons" } },
-		opts = {
-			lightbulb = { enable = false },
-			symbol_in_winbar = { enable = false },
-			ui = { border = "rounded" },
-		},
-	},
+	-- {
+	-- 	"glepnir/lspsaga.nvim",
+	-- 	event = "BufRead",
+	-- 	dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	-- 	opts = {
+	-- 		lightbulb = { enable = false },
+	-- 		symbol_in_winbar = { enable = false },
+	-- 		ui = { border = "rounded" },
+	-- 	},
+	-- },
 	{
 		"stevearc/aerial.nvim",
 		filter_kind = true,
