@@ -5,6 +5,7 @@ return {
 			prompt_prefix = "🔭 ",
 			selection_caret = " ",
 			path_display = { shorten = 5, exclude = { 1, -1 } },
+			initial_mode = "normal",
 		},
 		pickers = {
 			lsp_references = { include_declaration = false, show_line = false },
@@ -19,8 +20,10 @@ return {
 					"-g=!**/{node_modules,dist,.git,target}/**",
 					"-g=!*.{gw,pb,validate}.go", -- protobuf gen go file
 				},
+				initial_mode = "insert",
 			},
-			live_grep = { glob_pattern = { "!api/*", "!go.sum" } },
+			live_grep = { initial_mode = "insert", glob_pattern = { "!api/*", "!go.sum" } },
+			builtin = { initial_mode = "insert" },
 		},
 		extensions = { file_browser = { theme = "ivy" } },
 	},
