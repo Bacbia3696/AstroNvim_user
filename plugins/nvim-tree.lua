@@ -81,6 +81,7 @@ return {
 				or data.file:find("/private/tmp", 1, true)
 				or data.file:find("/Users/nguyenthanhdat/.mongodb/mongosh/editor", 1, true)
 				or vim.bo.filetype == "gitcommit"
+				or not real_file
 			then
 				return
 			end
@@ -162,7 +163,6 @@ return {
 			update_root = false,
 			ignore_list = {},
 		},
-		ignore_ft_on_setup = {},
 		diagnostics = {
 			enable = false,
 			show_on_dirs = false,
